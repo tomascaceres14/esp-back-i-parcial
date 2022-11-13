@@ -1,9 +1,8 @@
 config server X
 eureka server X
-gateway
+gateway X
 config data
 	eureka X
-	api movie
-	api catalog
-	api gateway
-	
+	api movie X
+	api catalog X
+	api gateway X
