@@ -10,8 +10,8 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: api-movies
-          uri: lb://api-movies
+        - id: api-movie
+          uri: lb://api-movie
           predicates:
             - Path=/api/v1/movies/**
         - id: api-catalog
