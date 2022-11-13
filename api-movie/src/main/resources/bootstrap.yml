@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-gateway-server
+    name: api-movies
   cloud:
     config:
       enabled: true

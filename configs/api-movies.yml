@@ -1,8 +1,6 @@
 server:
   port: ${PORT:${SERVER_PORT:0}}
 spring:
-  application:
-    name: api-movie
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/movie-dev
@@ -12,3 +10,4 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+
