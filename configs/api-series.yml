@@ -1,8 +1,26 @@
+
 server:
   port: ${PORT:${SERVER_PORT:0}}
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  zipkin:
+    baseUrl: http://localhost:9411/
+  application:
+    name: api-series
+  data:
+    mongodb:
+      username: usrspotifymongo
+      password: pwdspotifymongo
+      database: spotifydevmongo
+      port: 27017
+      host: localhost    
 eureka:
   client:
     registerWithEureka: true
     fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+    serviceURL:
+      defaultZone: http://localhost:8761/eureka
