@@ -18,10 +18,16 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    @GetMapping("")
+    ResponseEntity<List<Movie>> getAllMovies() {
+        return ResponseEntity.ok().body(movieService.findAll());
+    }
+    
     @GetMapping("/{genre}")
     ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre) {
         return ResponseEntity.ok().body(movieService.findByGenre(genre));
     }
+    
 
     @PostMapping("/save")
     ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
