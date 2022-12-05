@@ -13,9 +13,9 @@ spring:
     name: api-series
   data:
     mongodb:
-      username: usrspotifymongo
-      password: pwdspotifymongo
-      database: spotifydevmongo
+	database: series-dev-mongo
+      username: user-series-mongo
+      password: pwd-series-mongo
       port: 27017
       host: localhost    
 eureka:
