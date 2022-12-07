@@ -8,7 +8,6 @@ import com.dh.series.repository.ChapterRepository;
 import com.dh.series.repository.SeasonRepository;
 import com.dh.series.repository.SerieRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -53,29 +52,27 @@ public class SeasonServiceImpl implements SerieService {
     }
 
     @Override
+    public List<Serie> getSerieByGenre(String genre) {
+        return serieRepository.getSerieByGenre(genre);
+    }
+
+    @Override
     public void addSeason(Long serieId, Season season) throws Exception {
 
-        Serie serie = serieRepository.findById(serieId).orElse(null);
-
-        if (serie == null) {
-            throw new Exception("Serie id " + serieId + " not found");
-        }
+        Serie serie = serieRepository.findById(serieId).orElseThrow(() -> new Exception("Serie id " + serieId + " not found"));
 
         serie.getSeasons().add(season);
         serieRepository.save(serie);
+//        seriesEventProducer.execute(serie); borrar en catalogo
     }
 
     @Override
     public void addChapter(Long serieId, Long seasonId, Chapter chapter) throws Exception {
 
-        Serie serie = serieRepository.findById(serieId).orElse(null);
-        Season season = seasonRepository.findById(seasonId).orElse(null);
+        Serie serie = serieRepository.findById(serieId).orElseThrow(() -> new Exception("Serie id " + serieId + " not found"));
+        Season season = seasonRepository.findById(seasonId).orElseThrow(() -> new Exception("Season id " + serieId + " not found"));
 
-        if (serie == null && season == null ) {
-            throw new Exception("Serie or chapter id " + serieId + " not found");
-        }
-
-        serie.getSeasons().get(Math.toIntExact(seasonId)).getChapters().add(chapter);
+        season.getChapters().add(chapter);
         serieRepository.save(serie);
     }
 }

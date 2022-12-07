@@ -13,13 +13,10 @@ public class RabbitMQConfig {
     public static final String EXCHANGE_NAME = "dhExchange";
     public static final String TOPIC_NEW_PLAYLIST = "com.spotify.newSeries";
 
-
     @Bean
     public TopicExchange appExchange() {
         return new TopicExchange(EXCHANGE_NAME);
     }
-
-
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {

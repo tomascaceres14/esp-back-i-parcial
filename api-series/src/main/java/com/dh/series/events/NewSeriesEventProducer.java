@@ -21,11 +21,13 @@ public class NewSeriesEventProducer {
     public void execute(Serie serie) {
         SerieDTO serieDTO = new SerieDTO();
         BeanUtils.copyProperties(serie, serieDTO);
-
+        // corregir logica de mapeo
         SeasonDTO seasonDTO = serieDTO.getSeasons().get(0);
+
         if (seasonDTO != null && serie.getSeasons() != null) {
-            BeanUtils.copyProperties(serie.getSeasons(), serie.getSeasons());
+            BeanUtils.copyProperties(serie.getSeasons(), serieDTO.getSeasons());
         }
+
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.TOPIC_NEW_PLAYLIST, serieDTO);
     }
 

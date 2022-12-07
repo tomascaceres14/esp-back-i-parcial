@@ -15,13 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
-@Document(collection = "Season")
 public class Season implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Id
     private Long seasonId;
 
     private Integer seasonNumber;

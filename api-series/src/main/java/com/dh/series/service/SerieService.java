@@ -18,6 +18,8 @@ public interface SerieService {
 
     void update(Serie serie);
 
+    List<Serie> getSerieByGenre(String genre);
+
     void addChapter(Long serieId, Long seasonId, Chapter chapter) throws Exception;
 
     void addSeason(Long serieId, Season season) throws Exception;

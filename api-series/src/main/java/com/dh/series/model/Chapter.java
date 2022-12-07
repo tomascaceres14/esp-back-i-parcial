@@ -14,13 +14,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Setter
 @Getter
-@Document(collection = "Chapter")
 public class Chapter implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Id
     private Long chapterId;
 
     private String name;
