@@ -12,7 +12,7 @@ spring:
     name: api-series
   data:
     mongodb:
-	database: series-dev-mongo
+      database: series-dev-mongo
       username: user-series-mongo
       password: pwd-series-mongo
       port: 27017
