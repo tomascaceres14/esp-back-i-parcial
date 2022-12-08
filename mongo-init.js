@@ -1,13 +1,18 @@
+
+db = db.getSiblingDB('series-dev-mongo');
+
 db.createUser({
-  user: "usrspotifymongo",
-  pwd: "pwdspotifymongo",
+  user: "user-series-mongo",
+  pwd: "pwd-series-mongo",
   roles: [
     {
       role: "readWrite",
-      db: "spotifydevmongo",
+      db: "series-dev-mongo",
     },
   ],
 });
+
+db.createCollection('Serie');
 
 db.Serie.insertMany([
   {
@@ -20,7 +25,7 @@ db.Serie.insertMany([
       chapters: {
         chapterId: 1,
         name: "Adrian, un capo",
-        urlStream: "www  mundialqatar2022  tv",
+        urlStream: "www.mundialqatar2022.tv",
       },
     },
   },

@@ -14,7 +14,6 @@ public interface MovieServiceClient {
 	@GetMapping("/api/v1/movies/{genre}")
 	List<MovieDto> getMovieByGenre(@PathVariable (value = "genre") String genre);
 
-
 	@Getter
 	@Setter
 	class MovieDto{
