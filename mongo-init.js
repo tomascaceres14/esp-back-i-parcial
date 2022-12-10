@@ -1,5 +1,9 @@
+var db = connect("mongodb://admin:14292@127.0.0.1:27017/admin");
 
-db = db.getSiblingDB('series-dev-mongo');
+db =
+  db.getSiblingDB(
+    "series-dev-mongo"
+  ); /* 'use' statement doesn't support here to switch db */
 
 db.createUser({
   user: "user-series-mongo",
@@ -12,21 +16,24 @@ db.createUser({
   ],
 });
 
-db.createCollection('Serie');
+db.createCollection("Series");
 
-db.Serie.insertMany([
-  {
-    serieId: 1,
-    name: false,
-    genre: "Terror",
-    seasons: {
+db.holiday.insert({
+  serieId: 1,
+  name: "F.R.I.E.N.D.S",
+  genre: "comedy",
+  seasons: [
+    {
       seasonId: 1,
       seasonNumber: 1,
-      chapters: {
-        chapterId: 1,
-        name: "Adrian, un capo",
-        urlStream: "www.mundialqatar2022.tv",
-      },
+      chapters: [
+        {
+          chapterId: 1,
+          name: 1,
+          number: 1,
+          urlStream: "https://netflix.com.ar",
+        },
+      ],
     },
-  },
-]);
+  ],
+});
