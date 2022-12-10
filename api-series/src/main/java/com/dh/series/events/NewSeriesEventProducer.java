@@ -27,20 +27,20 @@ public class NewSeriesEventProducer {
     public void execute(Serie serie) {
         SerieDTO serieDTO = new SerieDTO();
         BeanUtils.copyProperties(serie, serieDTO);
-
         for (Season s :
                 serie.getSeasons()) {
             SeasonDTO sDTO = new SeasonDTO();
             BeanUtils.copyProperties(s, sDTO);
-
-            for (ChapterDTO c :
-                    sDTO.getChapters()) {
+            for (Chapter c :
+                    s.getChapters()) {
                 ChapterDTO cDTO = new ChapterDTO();
                 BeanUtils.copyProperties(c, cDTO);
                 sDTO.getChapters().add(cDTO);
             }
+
             serieDTO.getSeasons().add(sDTO);
         }
+
 
         if (serieDTO.getSeasons().get(0).getChapters().get(0) != null && serie.getSeasons().get(0).getChapters().get(0) != null) {
             //BeanUtils.copyProperties(serie.getSeasons(), serieDTO.getSeasons());
