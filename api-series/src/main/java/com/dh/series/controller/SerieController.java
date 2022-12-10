@@ -2,7 +2,6 @@ package com.dh.series.controller;
 
 import com.dh.series.model.Serie;
 import com.dh.series.service.SeasonServiceImpl;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -28,9 +27,8 @@ public class SerieController {
     }
 
     @PostMapping()
-    private ResponseEntity postSerie(Serie serie){
-        service.save(serie);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    private Serie postSerie(@RequestBody Serie serie){
+        return service.save(serie);
     }
 
 }

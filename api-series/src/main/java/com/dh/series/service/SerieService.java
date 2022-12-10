@@ -8,20 +8,20 @@ import java.util.List;
 
 public interface SerieService {
 
-    void save (Serie serie);
+    Serie save (Serie serie);
 
     List<Serie> getAll();
 
-    Serie getById(Long id);
+    Serie getById(String id);
 
-    void deleteById(Long id);
+    void deleteById(String id);
 
     void update(Serie serie);
 
     List<Serie> getSerieByGenre(String genre);
 
-    void addChapter(Long serieId, Long seasonId, Chapter chapter) throws Exception;
+    void addChapter(String serieId, String seasonId, Chapter chapter) throws Exception;
 
-    void addSeason(Long serieId, Season season) throws Exception;
+    void addSeason(String serieId, Season season) throws Exception;
 
 }

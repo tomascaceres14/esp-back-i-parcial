@@ -4,8 +4,6 @@ import com.dh.series.events.NewSeriesEventProducer;
 import com.dh.series.model.Chapter;
 import com.dh.series.model.Season;
 import com.dh.series.model.Serie;
-import com.dh.series.repository.ChapterRepository;
-import com.dh.series.repository.SeasonRepository;
 import com.dh.series.repository.SerieRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,19 +12,17 @@ import java.util.List;
 public class SeasonServiceImpl implements SerieService {
 
     private final SerieRepository serieRepository;
-    private final SeasonRepository seasonRepository;
     private final NewSeriesEventProducer seriesEventProducer;
 
-    public SeasonServiceImpl(SerieRepository serieRepository, SeasonRepository seasonRepository, ChapterRepository chapterRepository, SeasonRepository seasonRepository1, NewSeriesEventProducer seriesEventProducer) {
+    public SeasonServiceImpl(SerieRepository serieRepository, NewSeriesEventProducer seriesEventProducer) {
         this.serieRepository = serieRepository;
-        this.seasonRepository = seasonRepository1;
         this.seriesEventProducer = seriesEventProducer;
     }
 
     @Override
-    public void save(Serie serie) {
-        serieRepository.save(serie);
+    public Serie save(Serie serie) {
         seriesEventProducer.execute(serie);
+        return serieRepository.save(serie);
     }
 
     @Override
@@ -35,12 +31,12 @@ public class SeasonServiceImpl implements SerieService {
     }
 
     @Override
-    public Serie getById(Long id) {
+    public Serie getById(String id) {
         return serieRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         serieRepository.deleteById(id);
     }
 
@@ -57,7 +53,7 @@ public class SeasonServiceImpl implements SerieService {
     }
 
     @Override
-    public void addSeason(Long serieId, Season season) throws Exception {
+    public void addSeason(String serieId, Season season) throws Exception {
 
         Serie serie = serieRepository.findById(serieId).orElseThrow(() -> new Exception("Serie id " + serieId + " not found"));
 
@@ -67,12 +63,9 @@ public class SeasonServiceImpl implements SerieService {
     }
 
     @Override
-    public void addChapter(Long serieId, Long seasonId, Chapter chapter) throws Exception {
+    public void addChapter(String serieId, String seasonId, Chapter chapter) throws Exception {
 
         Serie serie = serieRepository.findById(serieId).orElseThrow(() -> new Exception("Serie id " + serieId + " not found"));
-        Season season = seasonRepository.findById(seasonId).orElseThrow(() -> new Exception("Season id " + serieId + " not found"));
-
-        season.getChapters().add(chapter);
         serieRepository.save(serie);
     }
 }

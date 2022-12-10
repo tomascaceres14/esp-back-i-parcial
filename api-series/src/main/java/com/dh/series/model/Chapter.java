@@ -19,7 +19,7 @@ public class Chapter implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private Long chapterId;
+    private Integer chapterId;
 
     private String name;
 
