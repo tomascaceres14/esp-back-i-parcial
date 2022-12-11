@@ -59,7 +59,7 @@ public class SeasonServiceImpl implements SerieService {
 
         serie.getSeasons().add(season);
         serieRepository.save(serie);
-//        seriesEventProducer.execute(serie); borrar en catalogo
+        seriesEventProducer.execute(serie);
     }
 
     @Override
@@ -67,5 +67,6 @@ public class SeasonServiceImpl implements SerieService {
 
         Serie serie = serieRepository.findById(serieId).orElseThrow(() -> new Exception("Serie id " + serieId + " not found"));
         serieRepository.save(serie);
+        seriesEventProducer.execute(serie);
     }
 }

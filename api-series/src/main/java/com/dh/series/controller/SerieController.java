@@ -27,7 +27,7 @@ public class SerieController {
     }
 
     @PostMapping()
-    private Serie postSerie(@RequestBody Serie serie){
+    private Serie postSeries(@RequestBody Serie serie){
         return service.save(serie);
     }
 
