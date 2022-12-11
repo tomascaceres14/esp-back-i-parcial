@@ -2,6 +2,7 @@ package com.dh.catalog.event;
 
 import com.dh.catalog.config.RabbitMQConfig;
 import com.dh.catalog.model.Movie;
+import com.dh.catalog.model.dto.MovieDTO;
 import com.dh.catalog.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,31 +24,10 @@ public class NewMovieEventConsumer {
     }
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_NEW_MOVIE)
-    public void execute(NewMovieEventConsumer.Data data) {
+    public void execute(MovieDTO movieDTO) {
         Movie movieNew= new Movie();
-        BeanUtils.copyProperties(data.getMovie(), movieNew);
-        movieRepository.deleteById(data.getMovie().getId());
+        BeanUtils.copyProperties(movieDTO, movieNew);
+        movieRepository.deleteById(movieNew.getMovieId());
         movieRepository.save(movieNew);
-    }
-
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Data implements Serializable {
-        private MovieDto movie = new MovieDto();
-
-        @Getter
-        @Setter
-        @NoArgsConstructor
-        @AllArgsConstructor
-        public static class MovieDto {
-
-            private Long id;
-            private String name;
-            private String genre;
-            private Integer urlStream;
-        }
-
     }
 }
