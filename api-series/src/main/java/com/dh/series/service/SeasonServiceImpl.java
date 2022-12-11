@@ -48,8 +48,8 @@ public class SeasonServiceImpl implements SerieService {
     }
 
     @Override
-    public List<Serie> getSerieByGenre(String genre) {
-        return serieRepository.getSerieByGenre(genre);
+    public List<Serie> findByGenre(String genre) {
+        return serieRepository.findByGenre(genre);
     }
 
     @Override

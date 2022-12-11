@@ -18,7 +18,7 @@ public interface SerieService {
 
     void update(Serie serie);
 
-    List<Serie> getSerieByGenre(String genre);
+    List<Serie> findByGenre(String genre);
 
     void addChapter(String serieId, String seasonId, Chapter chapter) throws Exception;
 

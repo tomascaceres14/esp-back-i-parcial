@@ -22,8 +22,8 @@ public class SerieController {
     }
 
     @GetMapping("/{genre}")
-    private ResponseEntity<List<Serie>> getSeriesByGenre(@PathVariable String genre){
-        return ResponseEntity.ok(service.getSerieByGenre(genre));
+    private ResponseEntity<List<Serie>> findByGenre(@PathVariable String genre){
+        return ResponseEntity.ok(service.findByGenre(genre));
     }
 
     @PostMapping()

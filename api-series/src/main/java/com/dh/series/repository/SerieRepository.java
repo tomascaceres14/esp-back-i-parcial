@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface SerieRepository extends MongoRepository<Serie, String> {
-    List<Serie> getSerieByGenre(String genre);
+    List<Serie> findByGenre(String genre);
 }
