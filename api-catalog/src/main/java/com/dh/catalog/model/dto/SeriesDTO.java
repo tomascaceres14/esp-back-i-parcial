@@ -25,5 +25,5 @@ public class SeriesDTO implements Serializable {
 
     private String genre;
 
-    private List<SeasonDTO> seasons = new ArrayList<>();
+    private List<SeasonDTO> seasonsDTO = new ArrayList<>();
 }

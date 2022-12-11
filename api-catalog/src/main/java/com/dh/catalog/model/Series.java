@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,6 +29,6 @@ public class Series implements Serializable {
 
     private String genre;
 
-    private List<Season> seasons;
+    private List<Season> seasons = new ArrayList<>();
 
 }

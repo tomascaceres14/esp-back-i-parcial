@@ -19,10 +19,10 @@ public class SeasonDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String seasonId;
+    private Integer seasonId;
 
     private Integer seasonNumber;
 
-    private List<ChapterDTO> chapterDTOS = new ArrayList<>();;
+    private List<ChapterDTO> chaptersDTO = new ArrayList<>();
 
 }

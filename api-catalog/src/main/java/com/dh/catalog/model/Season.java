@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,10 +18,10 @@ public class Season implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String seasonId;
+    private Integer seasonId;
 
     private Integer seasonNumber;
 
-    private List<Chapter> chapters;
+    private List<Chapter> chapters = new ArrayList<>();
 
 }
