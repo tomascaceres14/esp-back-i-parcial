@@ -23,6 +23,7 @@ public class NewSeriesEventConsumer {
     @RabbitListener(queues = RabbitMQConfig.QUEUE_NEW_SERIES)
     public void execute(SeriesDTO seriesDTO) {
         Series series = new Series();
+        System.out.println(seriesDTO);
         BeanUtils.copyProperties(seriesDTO, series);
         for (SeasonDTO sDTO :
                 seriesDTO.getSeasonsDTO()) {
@@ -34,7 +35,7 @@ public class NewSeriesEventConsumer {
                 BeanUtils.copyProperties(cDTO, chapter);
                 season.getChapters().add(chapter);
             }
-
+            System.out.println(series);
             series.getSeasons().add(season);
         }
         seriesRepository.deleteById(series.getSerieId());

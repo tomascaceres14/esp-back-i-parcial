@@ -1,9 +1,7 @@
 package com.dh.catalog.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Season implements Serializable {
 
     @Serial
