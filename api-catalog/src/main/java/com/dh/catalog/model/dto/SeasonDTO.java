@@ -1,18 +1,20 @@
-package com.dh.catalog.model;
+package com.dh.catalog.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
 @Getter
-public class Season implements Serializable {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class SeasonDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -21,6 +23,6 @@ public class Season implements Serializable {
 
     private Integer seasonNumber;
 
-    private List<Chapter> chapters;
+    private List<ChapterDTO> chapterDTOS = new ArrayList<>();;
 
 }

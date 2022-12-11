@@ -1,4 +1,4 @@
-package com.dh.catalog.model;
+package com.dh.catalog.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,11 +8,11 @@ import lombok.Setter;
 import java.io.Serial;
 import java.io.Serializable;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
 @Getter
-public class Chapter implements Serializable {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ChapterDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -24,5 +24,4 @@ public class Chapter implements Serializable {
     private Integer number;
 
     private String urlStream;
-
 }
