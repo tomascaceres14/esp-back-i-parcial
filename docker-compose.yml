@@ -23,6 +23,10 @@ services:
       MONGO_INITDB_DATABASE: 'series-dev-mongo'
       MONGO_INITDB_ROOT_USERNAME: 'user-series-mongo'
       MONGO_INITDB_ROOT_PASSWORD: 'pwd-series-mongo'
+    environment:
+      MONGO_INITDB_DATABASE: 'catalog-dev-mongo'
+      MONGO_INITDB_ROOT_USERNAME: 'user-series-mongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwd-series-mongo'
     ports:
       - 27017:27017
     expose:
