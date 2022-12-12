@@ -3,6 +3,8 @@ package com.dh.catalog.controller;
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.client.SerieServiceClient;
 import com.dh.catalog.model.dto.Genre;
+import com.dh.catalog.repository.MovieRepository;
+import com.dh.catalog.repository.SeriesRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +18,14 @@ public class CatalogController {
 	private final MovieServiceClient movieServiceClient;
 	private final SerieServiceClient serieServiceClient;
 
-	public CatalogController(MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient) {
+	private final MovieRepository movieRepository;
+	private final SeriesRepository seriesRepository;
+
+	public CatalogController(MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient, MovieRepository movieRepository, SeriesRepository seriesRepository) {
 		this.movieServiceClient = movieServiceClient;
 		this.serieServiceClient = serieServiceClient;
+		this.movieRepository = movieRepository;
+		this.seriesRepository = seriesRepository;
 	}
 
 	@GetMapping("/online/{genre}")
@@ -36,8 +43,8 @@ public class CatalogController {
 	ResponseEntity<Genre> getAllByGenreOffline(@PathVariable String genre) {
 		Genre response = new Genre();
 
-		response.setMovies(movieServiceClient.findByGenre(genre));
-		response.setSeries(serieServiceClient.findByGenre(genre));
+		response.setMovies(movieRepository.findByGenre(genre));
+		response.setSeries(seriesRepository.findByGenre(genre));
 		response.setGenre(genre);
 
 		return ResponseEntity.ok().body(response);

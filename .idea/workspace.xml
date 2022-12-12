@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b64cace6-f038-41f3-9840-f3186a2519b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/config/RabbitMQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/controller/SerieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/controller/SerieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/events/NewSeriesEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/events/NewSeriesEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/service/SeasonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-series/src/main/java/com/dh/series/service/SeasonServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-catalog/src/main/java/com/dh/catalog/service/CatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-catalog/src/main/java/com/dh/catalog/controller/CatalogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-catalog/src/main/java/com/dh/catalog/controller/CatalogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-catalog/src/main/java/com/dh/catalog/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-catalog/src/main/java/com/dh/catalog/repository/MovieRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +25,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Isa/Documents/DH/BE_II/Final/finalTomi/esp-back-i-parcial-TomasACaceres",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
+    ]
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -39,6 +52,13 @@
       <option name="presentableId" value="Default" />
       <updated>1670719419040</updated>
       <workItem from="1670719427662" duration="18000" />
+      <workItem from="1670858501434" duration="80000" />
+      <workItem from="1670858619064" duration="263000" />
+      <workItem from="1670858987280" duration="427000" />
+      <workItem from="1670859455038" duration="8000" />
+      <workItem from="1670859539599" duration="33000" />
+      <workItem from="1670859805302" duration="74000" />
+      <workItem from="1670860484065" duration="3740000" />
     </task>
     <servers />
   </component>
