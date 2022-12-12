@@ -1,4 +1,4 @@
-package com.dh.catalog.model;
+package com.dh.catalog.model.dto;
 
 import com.dh.catalog.model.dto.MovieDTO;
 import com.dh.catalog.model.dto.SeriesDTO;
