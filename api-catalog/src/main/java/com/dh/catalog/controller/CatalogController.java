@@ -1,6 +1,9 @@
 package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
+import com.dh.catalog.client.SerieServiceClient;
+import com.dh.catalog.model.Genre;
+import com.dh.catalog.model.dto.MovieDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,14 +17,26 @@ import java.util.List;
 public class CatalogController {
 
 	private final MovieServiceClient movieServiceClient;
+	private final SerieServiceClient serieServiceClient;
 
-	public CatalogController(MovieServiceClient movieServiceClient) {
+	public CatalogController(MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient) {
 		this.movieServiceClient = movieServiceClient;
+		this.serieServiceClient = serieServiceClient;
 	}
 
-	@GetMapping("/{genre}")
-	ResponseEntity<List<MovieServiceClient.MovieDto>> getGenre(@PathVariable String genre) {
-		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
+	@GetMapping("/movies/{genre}")
+	ResponseEntity<List<MovieDTO>> getGenre(@PathVariable String genre) {
+
+		return ResponseEntity.ok(movieServiceClient.findByGenre(genre));
+	}
+
+	@GetMapping("/online/{genre}")
+	ResponseEntity<Genre> getAllByGenre(@PathVariable String genre) {
+		Genre response = new Genre();
+		response.setMovies(movieServiceClient.findByGenre(genre));
+		response.setSeries(serieServiceClient.findByGenre(genre));
+		response.setGenre(genre);
+		return ResponseEntity.ok().body(response);
 	}
 
 }
