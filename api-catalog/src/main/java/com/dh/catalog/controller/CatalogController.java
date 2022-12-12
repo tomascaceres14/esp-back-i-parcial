@@ -1,7 +1,7 @@
 package com.dh.catalog.controller;
 
-import com.dh.catalog.client.MovieServiceClient;
-import com.dh.catalog.client.SerieServiceClient;
+import com.dh.catalog.client.MovieRepositoryFeing;
+import com.dh.catalog.client.ServiceRepositoryFeing;
 import com.dh.catalog.model.dto.GenreDTO;
 import com.dh.catalog.service.CatalogService;
 import org.springframework.http.ResponseEntity;
@@ -13,26 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/catalog")
 public class CatalogController {
-
-	private final MovieServiceClient movieServiceClient;
-	private final SerieServiceClient serieServiceClient;
 	private final CatalogService catalogService;
 
-	public CatalogController(MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient, CatalogService catalogService) {
-		this.movieServiceClient = movieServiceClient;
-		this.serieServiceClient = serieServiceClient;
+	public CatalogController(CatalogService catalogService) {
 		this.catalogService = catalogService;
 	}
 
 	@GetMapping("/online/{genre}")
 	ResponseEntity<GenreDTO> getAllByGenreOnline(@PathVariable String genre) {
-		GenreDTO response = new GenreDTO();
-
-		response.setMovies(movieServiceClient.findByGenre(genre));
-		response.SaveToSeriesDTO(serieServiceClient.findByGenre(genre));
-		response.setGenre(genre);
-
-		return ResponseEntity.ok().body(response);
+		return ResponseEntity.ok().body(catalogService.findMoviesAndSeriesByGenreOnline(genre));
 	}
 
 	@GetMapping("/offline/{genre}")
