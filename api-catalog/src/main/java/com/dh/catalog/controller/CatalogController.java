@@ -2,9 +2,8 @@ package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.client.SerieServiceClient;
-import com.dh.catalog.model.dto.Genre;
-import com.dh.catalog.repository.MovieRepository;
-import com.dh.catalog.repository.SeriesRepository;
+import com.dh.catalog.model.dto.GenreDTO;
+import com.dh.catalog.service.CatalogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,20 +16,17 @@ public class CatalogController {
 
 	private final MovieServiceClient movieServiceClient;
 	private final SerieServiceClient serieServiceClient;
+	private final CatalogService catalogService;
 
-	private final MovieRepository movieRepository;
-	private final SeriesRepository seriesRepository;
-
-	public CatalogController(MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient, MovieRepository movieRepository, SeriesRepository seriesRepository) {
+	public CatalogController(MovieServiceClient movieServiceClient, SerieServiceClient serieServiceClient, CatalogService catalogService) {
 		this.movieServiceClient = movieServiceClient;
 		this.serieServiceClient = serieServiceClient;
-		this.movieRepository = movieRepository;
-		this.seriesRepository = seriesRepository;
+		this.catalogService = catalogService;
 	}
 
 	@GetMapping("/online/{genre}")
-	ResponseEntity<Genre> getAllByGenreOnline(@PathVariable String genre) {
-		Genre response = new Genre();
+	ResponseEntity<GenreDTO> getAllByGenreOnline(@PathVariable String genre) {
+		GenreDTO response = new GenreDTO();
 
 		response.setMovies(movieServiceClient.findByGenre(genre));
 		response.setSeries(serieServiceClient.findByGenre(genre));
@@ -40,12 +36,12 @@ public class CatalogController {
 	}
 
 	@GetMapping("/offline/{genre}")
-	ResponseEntity<Genre> getAllByGenreOffline(@PathVariable String genre) {
-		Genre response = new Genre();
-
-		response.setMovies(movieRepository.findByGenre(genre));
-		response.setSeries(seriesRepository.findByGenre(genre));
+	ResponseEntity<GenreDTO> getAllByGenreOffline(@PathVariable String genre) {
+		GenreDTO response = new GenreDTO();
 		response.setGenre(genre);
+
+		response.SaveToMoviesDTO(catalogService.findMoviesByGenre(genre));
+		response.SaveToSeriesDTO(catalogService.findSeriesByGenre(genre));
 
 		return ResponseEntity.ok().body(response);
 	}
