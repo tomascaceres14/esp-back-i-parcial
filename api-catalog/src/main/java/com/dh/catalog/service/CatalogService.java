@@ -42,7 +42,7 @@ public class CatalogService{
     }
 
     @Retry(name = "retryCatalog")
-    @CircuitBreaker(name = "clientCatalog", fallbackMethod = "getCatalogFallbackValue") // para la tolerancia a fallos, decidi implementar la una ventana de tiempo para asi
+    @CircuitBreaker(name = "clientCatalog", fallbackMethod = "getCatalogFallbackValue") // para la tolerancia a fallos, decidi implementar una ventana de tiempo para asi
     public GenreDTO findMoviesAndSeriesByGenreOnline(String genre){                     // darle unos momentos a los microservicios a que se inicien correctamente. Me ha pasado
         GenreDTO response = new GenreDTO();                                             // durante el desarrollo que a veces iniciaba muchos microservicios a la vez pero a alguno
         response.setMovies(movieRepositoryFeign.findByGenre(genre));                    // le tomaba mas tiempo que al resto entonces aparecian errores en pantalla y en consola.
@@ -50,6 +50,5 @@ public class CatalogService{
         response.setGenre(genre);
         return response;
     }
-
 
 }
