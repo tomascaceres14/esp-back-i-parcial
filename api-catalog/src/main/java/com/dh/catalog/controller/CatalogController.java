@@ -29,7 +29,7 @@ public class CatalogController {
 		GenreDTO response = new GenreDTO();
 
 		response.setMovies(movieServiceClient.findByGenre(genre));
-		response.setSeries(serieServiceClient.findByGenre(genre));
+		response.SaveToSeriesDTO(serieServiceClient.findByGenre(genre));
 		response.setGenre(genre);
 
 		return ResponseEntity.ok().body(response);
