@@ -1,4 +1,0 @@
-Dudas:
-	- El gateway debe tener un ruteo solo para el microservicio de Catalog (el cual de fondo se comunica con movies y series) o debe tener un ruteo para cada microservicio?
-	- El microservicio de series debe tener su propia base de datos no relacional o se puede crear una tabla en la base de datos de movies?
-	- 
