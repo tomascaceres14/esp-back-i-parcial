@@ -19,14 +19,14 @@ public class CatalogService{
 
     private final MovieRepository movieRepository;
     private final SeriesRepository seriesRepository;
-    private final MovieRepositoryFeing movieRepositoryFeing;
-    private final ServiceRepositoryFeing serviceRepositoryFeing;
+    private final MovieRepositoryFeing movieRepositoryFeign;
+    private final ServiceRepositoryFeing serviceRepositoryFeign;
 
-    public CatalogService(MovieRepository movieRepository, SeriesRepository seriesRepository, MovieRepositoryFeing movieRepositoryFeing, ServiceRepositoryFeing serviceRepositoryFeing) {
+    public CatalogService(MovieRepository movieRepository, SeriesRepository seriesRepository, MovieRepositoryFeing movieRepositoryFeing, ServiceRepositoryFeing serviceRepositoryFeign) {
         this.movieRepository = movieRepository;
         this.seriesRepository = seriesRepository;
-        this.movieRepositoryFeing = movieRepositoryFeing;
-        this.serviceRepositoryFeing = serviceRepositoryFeing;
+        this.movieRepositoryFeign = movieRepositoryFeing;
+        this.serviceRepositoryFeign = serviceRepositoryFeign;
     }
 
     public List<Movie> findMoviesByGenre(String genre) {
@@ -36,17 +36,20 @@ public class CatalogService{
     public List<Series> findSeriesByGenre(String genre) {
         return seriesRepository.findByGenre(genre);
     }
-    @Retry(name = "retryCatalog")
-    @CircuitBreaker(name = "clientCatalog", fallbackMethod = "getCatalogFallbackValue")
-    public GenreDTO findMoviesAndSeriesByGenreOnline(String genre){
-        GenreDTO response = new GenreDTO();
-        response.setMovies(movieRepositoryFeing.findByGenre(genre));
-        response.SaveToSeriesDTO(serviceRepositoryFeing.findByGenre(genre));
-        response.setGenre(genre);
-        return response;
-    }
 
     public void getCatalogFallbackValue(CallNotPermittedException ex) throws Exception {
         throw new Exception("Circuit breaker activated");
     }
+
+    @Retry(name = "retryCatalog")
+    @CircuitBreaker(name = "clientCatalog", fallbackMethod = "getCatalogFallbackValue")
+    public GenreDTO findMoviesAndSeriesByGenreOnline(String genre){
+        GenreDTO response = new GenreDTO();
+        response.setMovies(movieRepositoryFeign.findByGenre(genre));
+        response.SaveToSeriesDTO(serviceRepositoryFeign.findByGenre(genre));
+        response.setGenre(genre);
+        return response;
+    }
+
+
 }

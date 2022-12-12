@@ -34,5 +34,4 @@ public class CatalogController {
 
 		return ResponseEntity.ok().body(response);
 	}
-
 }
