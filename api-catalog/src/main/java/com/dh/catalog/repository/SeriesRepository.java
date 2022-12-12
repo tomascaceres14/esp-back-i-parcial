@@ -1,7 +1,6 @@
 package com.dh.catalog.repository;
 
 import com.dh.catalog.model.Series;
-import com.dh.catalog.model.dto.SeriesDTO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

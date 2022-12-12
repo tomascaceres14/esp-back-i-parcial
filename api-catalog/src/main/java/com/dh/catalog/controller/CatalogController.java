@@ -1,7 +1,5 @@
 package com.dh.catalog.controller;
 
-import com.dh.catalog.client.MovieRepositoryFeing;
-import com.dh.catalog.client.ServiceRepositoryFeing;
 import com.dh.catalog.model.dto.GenreDTO;
 import com.dh.catalog.service.CatalogService;
 import org.springframework.http.ResponseEntity;
